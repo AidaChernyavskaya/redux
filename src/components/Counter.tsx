@@ -16,7 +16,7 @@ const Counter = () => {
     }
 
     return (
-        <div>
+        <div style={{marginBottom: '50px'}}>
             <Typography.Title level={2}>Counter</Typography.Title>
             <Flex justify={"center"} align={"center"} gap={"middle"}>
                 <Button onClick={addNumber}>Increment</Button>
