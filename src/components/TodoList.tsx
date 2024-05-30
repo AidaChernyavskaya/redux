@@ -27,6 +27,10 @@ const TodoList = () => {
         dispatch({type: 'REMOVE_TASK', payload: task.id})
     }
 
+    const toggleTask = (task: ITask) => {
+        dispatch({type: 'TOGGLE_TASK', payload: task.id})
+    }
+
     return (
         <div>
             <Typography.Title level={2}>To-do list</Typography.Title>
@@ -59,7 +63,7 @@ const TodoList = () => {
                     : Array.isArray(tasks) && tasks.map((el, index) => (
                         <Flex gap={"middle"} justify={"center"} align={"flex-end"} key={index}>
                             <Typography.Text style={{fontSize: '16px'}} delete={el.isDone} disabled={el.isDone}>{el.title}</Typography.Text>
-                            <Checkbox checked={el.isDone}/>
+                            <Checkbox checked={el.isDone} onChange={() => toggleTask(el)}/>
                             <Button icon={<DeleteFilled />} size={"small"} shape={'circle'} onClick={() => removeTask(el)}/>
                         </Flex>
                     ))

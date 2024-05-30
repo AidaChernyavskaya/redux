@@ -39,6 +39,12 @@ const todoReducer = (state: ITodoState = initialTasks, action: PayloadAction<ITa
             return {...state, tasks: [...state.tasks, action.payload]}
         case 'REMOVE_TASK':
             return {...state, tasks: state.tasks.filter(task => task.id !== Number(action.payload))}
+        case 'TOGGLE_TASK':
+            return {...state, tasks:
+                state.tasks.map((task) =>
+                    task.id === Number(action.payload) ? {...task, isDone: !task.isDone} : task
+                )
+            }
         default:
             return state;
     }
