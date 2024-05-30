@@ -19,8 +19,31 @@ const counterReducer = (state: ICounterState = initialState, action: PayloadActi
     }
 };
 
+export interface ITodoState {
+    tasks: ITask[];
+}
+
+export interface ITask {
+    title: string;
+    isDone: boolean;
+}
+
+const initialTasks: ITodoState = {
+    tasks: []
+};
+
+const todoReducer = (state: ITodoState = initialTasks, action: PayloadAction<ITask>) => {
+    switch (action.type) {
+        case 'ADD_TASK':
+            return {...state, tasks: [...state.tasks, action.payload]}
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     counter: counterReducer,
+    todo: todoReducer,
 });
 
 export default rootReducer;
