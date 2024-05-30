@@ -26,6 +26,7 @@ export interface ITodoState {
 export interface ITask {
     title: string;
     isDone: boolean;
+    id: number;
 }
 
 const initialTasks: ITodoState = {
@@ -36,6 +37,8 @@ const todoReducer = (state: ITodoState = initialTasks, action: PayloadAction<ITa
     switch (action.type) {
         case 'ADD_TASK':
             return {...state, tasks: [...state.tasks, action.payload]}
+        case 'REMOVE_TASK':
+            return {...state, tasks: state.tasks.filter(task => task.id !== Number(action.payload))}
         default:
             return state;
     }
