@@ -50,9 +50,49 @@ const todoReducer = (state: ITodoState = initialTasks, action: PayloadAction<ITa
     }
 };
 
+export interface IPost {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+}
+
+export interface IPostsState {
+    posts: IPost[];
+    error: null | string;
+    loading: boolean;
+    page: number;
+    limit: number;
+}
+
+const initialPosts: IPostsState = {
+    posts: [],
+    error: null,
+    loading: false,
+    page: 1,
+    limit: 10,
+}
+
+const postsReducer = (state: IPostsState = initialPosts, action: PayloadAction) => {
+    switch (action.type) {
+        case 'FETCH_POSTS':
+            return {...state, loading: true};
+        case 'FETCH_POSTS_SUCCESS':
+            return {...state, loading: false, posts: action.payload};
+        case 'FETCH_POSTS_ERROR':
+            return {...state, loading: false, error: action.payload};
+        case 'SET_POSTS_PAGE':
+            return {...state, page: action.payload};
+        default:
+            return state;
+    }
+}
+
+
 const rootReducer = combineReducers({
     counter: counterReducer,
     todo: todoReducer,
+    posts: postsReducer,
 });
 
 export default rootReducer;

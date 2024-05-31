@@ -32,7 +32,7 @@ const TodoList = () => {
     }
 
     return (
-        <div>
+        <div style={{marginBottom: '50px'}}>
             <Typography.Title level={2}>To-do list</Typography.Title>
             <Form
                 className={'form'} layout={"inline"}
