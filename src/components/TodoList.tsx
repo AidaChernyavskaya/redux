@@ -35,11 +35,11 @@ const TodoList = () => {
         <div>
             <Typography.Title level={2}>To-do list</Typography.Title>
             <Form
-                style={{maxWidth: '500px', margin: '0 auto 10px auto'}} layout={"inline"}
+                className={'form'} layout={"inline"}
                 onFinish={addTask} form={form}
             >
                 <Form.Item
-                    style={{width: '78%', marginLeft: '20px'}}
+                    className={'input'}
                     name={'task'}
                     rules={[
                         {
@@ -53,7 +53,7 @@ const TodoList = () => {
                         value={title} onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Item>
-                <Form.Item >
+                <Form.Item className={'button'}>
                     <Button type={"primary"} htmlType={"submit"}>Add</Button>
                 </Form.Item>
             </Form>
@@ -61,14 +61,16 @@ const TodoList = () => {
                 Array.isArray(tasks) && tasks.length === 0
                     ? <Typography.Text>No tasks</Typography.Text>
                     : Array.isArray(tasks) && tasks.map((el, index) => (
-                        <Flex gap={"middle"} justify={"center"} align={"flex-end"} key={index}>
-                            <Typography.Text style={{fontSize: '16px'}} delete={el.isDone} disabled={el.isDone}>{el.title}</Typography.Text>
-                            <Checkbox checked={el.isDone} onChange={() => toggleTask(el)}/>
-                            <Button icon={<DeleteFilled />} size={"small"} shape={'circle'} onClick={() => removeTask(el)}/>
+                        <Flex gap={"middle"} justify={"space-between"} align={"flex-end"} key={index} className={'tasks'}>
+                            <Typography.Text style={{fontSize: '16px'}}  disabled={el.isDone}>{el.title}</Typography.Text>
+                            <Flex gap={'small'}>
+                                <Checkbox checked={el.isDone} onChange={() => toggleTask(el)}/>
+                                <Button icon={<DeleteFilled />} size={"small"} shape={'circle'} onClick={() => removeTask(el)}/>
+                            </Flex>
+
                         </Flex>
                     ))
             }
-
         </div>
     );
 };

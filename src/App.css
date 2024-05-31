@@ -2,3 +2,28 @@
   text-align: center;
 }
 
+.input {
+  width: 100%;
+}
+
+.form {
+  max-width: 500px;
+  margin: 0 auto 10px auto;
+  display: grid;
+  grid-template-columns: auto 20%;
+  grid-gap: 10px;
+}
+
+.tasks {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.button {
+  justify-self: end;
+}
+
+.ant-form-inline .ant-form-item {
+  margin-inline-end: 0;
+}
+
