@@ -23,6 +23,11 @@
   justify-self: end;
 }
 
+.posts {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .ant-form-inline .ant-form-item {
   margin-inline-end: 0;
 }
