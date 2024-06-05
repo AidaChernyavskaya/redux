@@ -16,3 +16,7 @@ export const fetchPosts = (page: number | void = 1, limit = 10) => {
         }
     }
 }
+
+export const setPostsPage = (page: number) => {
+    return {type: 'SET_POSTS_PAGE', payload: page}
+}
