@@ -2,17 +2,18 @@ import React from 'react';
 import {Button, Flex, Typography} from 'antd';
 import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../hooks/useTypedSelector";
+import {CounterActionTypes} from "../types/counter";
 
 const Counter = () => {
     const dispatch = useDispatch();
     const count = useTypedSelector(state => state.counter.counter);
 
     const addNumber = () => {
-        dispatch({type: 'INCREMENT'});
+        dispatch({type: CounterActionTypes.INCREMENT});
     }
 
     const reduceNumber = () => {
-        dispatch({type: 'DECREMENT'});
+        dispatch({type: CounterActionTypes.DECREMENT});
     }
 
     return (

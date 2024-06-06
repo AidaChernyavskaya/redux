@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Checkbox, Flex, Form, Input, Typography} from "antd";
 import {useForm} from "antd/es/form/Form";
 import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {DeleteFilled} from "@ant-design/icons";
-import {ITask} from "../reducers";
+import {ITask, TodoActionTypes} from "../types/todo";
 
 const TodoList = () => {
     const [title, setTitle] = useState('');
@@ -18,17 +18,17 @@ const TodoList = () => {
             isDone: false,
             id: Date.now(),
         }
-        dispatch({type: 'ADD_TASK', payload: task});
+        dispatch({type: TodoActionTypes.ADD_TASK, payload: task});
         setTitle('');
         form.resetFields();
     }
 
     const removeTask = (task: ITask) => {
-        dispatch({type: 'REMOVE_TASK', payload: task.id})
+        dispatch({type: TodoActionTypes.REMOVE_TASK, payload: task.id})
     }
 
     const toggleTask = (task: ITask) => {
-        dispatch({type: 'TOGGLE_TASK', payload: task.id})
+        dispatch({type: TodoActionTypes.TOGGLE_TASK, payload: task.id})
     }
 
     return (
